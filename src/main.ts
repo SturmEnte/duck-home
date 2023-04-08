@@ -28,7 +28,6 @@ app.all("*", (req, res) => {
 		res.redirect("/login");
 		return;
 	}
-
 	if (req.next) req.next();
 });
 
