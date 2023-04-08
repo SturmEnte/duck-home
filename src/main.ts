@@ -3,7 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import { join as path } from "path";
 
-const ignoreLoggedIn = ["login", "api", ".css", ".js"];
+const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico"];
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 app.all("*", (req, res) => {
 	console.log(req.url);
-	if (!req.cookies.loggedIn && ignore(req.url)) {
+	if (!req.cookies.loggedIn && !ignore(req.url)) {
 		res.redirect("/login");
 		return;
 	}
@@ -33,7 +33,7 @@ function ignore(url: string): boolean {
 	let ignore = false;
 	ignoreLoggedIn.forEach((s) => {
 		if (url.includes(s)) {
-			ignore;
+			ignore = true;
 		}
 	});
 	return ignore;
