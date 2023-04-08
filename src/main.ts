@@ -3,6 +3,8 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import { join as path } from "path";
 
+import api from "./routes/api";
+
 const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico"];
 
 const app = express();
@@ -20,6 +22,8 @@ app.all("*", (req, res) => {
 });
 
 app.use(express.static(path(__dirname, "public")));
+
+app.use("/api", api);
 
 app.all("*", (req, res) => {
 	res.sendFile(path(__dirname, "public", "404/404.html"));
