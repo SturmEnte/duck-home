@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { connect } from "mongoose";
 import express from "express";
 import cookieParser from "cookie-parser";
 import { join as path } from "path";
@@ -6,6 +7,16 @@ import { join as path } from "path";
 import api from "./routes/api";
 
 const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico"];
+
+connect(String(process.env.DB_URI))
+	.then(() => {
+		console.log("Connected to database");
+	})
+	.catch((err) => {
+		console.log("Error while connecting to the database");
+		console.log(err);
+		process.exit();
+	});
 
 const app = express();
 
