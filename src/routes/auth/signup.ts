@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { v4 as uuid } from "uuid";
-import bcrypt from "bcrypt";
+import { hashSync } from "bcrypt";
 
 import User from "../../models/User";
 
@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
 	User.create({
 		id,
 		username: req.body.username,
-		password: bcrypt.hashSync(req.body.password, 10),
+		password: hashSync(req.body.password, 10),
 		createdAt: Date.now(),
 	})
 		.then(() => {
