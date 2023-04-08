@@ -5,7 +5,7 @@
 	"main": "src/main.ts",
 	"scripts": {
 		"start": "node src/main.ts",
-		"test": "nodemon src/main.ts",
+		"test": "nodemon --ignore ./src/public/ src/main.ts",
 		"dev": "npm test"
 	},
 	"author": "SturmEnte",
