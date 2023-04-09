@@ -1,0 +1,53 @@
+:root {
+	--sidebar-width: 350px;
+	--tb-height: 80px;
+}
+
+body {
+	display: flex;
+}
+
+#sidebar {
+	width: var(--sidebar-width);
+	height: 100vh;
+	background: var(--bg-sec);
+}
+
+#stitle {
+	font-size: 2rem;
+	width: var(--sidebar-width);
+	height: var(--tb-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#modules {
+	width: var(--sidebar-width);
+	height: calc(100vh - 2 * var(--tb-height));
+}
+
+#bottom {
+	width: var(--sidebar-width);
+	height: var(--tb-height);
+	box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 10px;
+	font-size: 1.3rem;
+}
+
+#content {
+	width: calc(100vw - 350px);
+	height: 100vh;
+}
+
+button {
+	background: white;
+	color: black;
+	width: 100px;
+	height: 50px;
+	font-size: 1rem;
+}

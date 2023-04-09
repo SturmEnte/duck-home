@@ -15,3 +15,14 @@ body {
 	height: 100vh;
 	background: var(--bg-prim);
 }
+
+input,
+button {
+	border: none;
+	box-sizing: border-box;
+	border-radius: var(--border-radius);
+}
+
+button {
+	cursor: pointer;
+}
