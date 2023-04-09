@@ -1,3 +1,4 @@
+// Load sidebar
 fetch("/sidebar.html").then((res) => {
 	res.text().then((data) => {
 		let oldBody = document.body.innerHTML;
@@ -6,6 +7,7 @@ fetch("/sidebar.html").then((res) => {
 	});
 });
 
+// Insert the username into the bottom field inside the sidebar
 fetch("/api/user", {
 	method: "get",
 	headers: {
@@ -19,6 +21,7 @@ fetch("/api/user", {
 
 // Executes when the sidebar is inserted into the body
 function sidebarLoaded() {
+	// Logout button
 	document.getElementById("logout").onclick = () => {
 		fetch("/api/logout", {
 			method: "delete",
