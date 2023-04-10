@@ -6,7 +6,7 @@ import { join as path } from "path";
 
 import api from "./routes/api";
 
-const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico"];
+const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico", ".json"];
 
 connect(String(process.env.DB_URI))
 	.then(() => {
