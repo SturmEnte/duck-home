@@ -36,7 +36,7 @@ app.use(express.static(path(__dirname, "public")));
 app.use("/api", api);
 
 app.all("*", (req, res) => {
-	res.sendFile(path(__dirname, "public", "404/404.html"));
+	res.status(404).sendFile(path(__dirname, "public", "404/404.html"));
 });
 
 app.listen(process.env.PORT, () => {
