@@ -45,4 +45,19 @@ function sidebarLoaded() {
 			window.location.href = "/login";
 		});
 	};
+
+	const modulesElem = document.getElementById("modules");
+
+	// Load modules
+	fetch("/modules.json")
+		.then((res) => {
+			if (res.status != 200) {
+				modulesElem.innerHTML = "Failed to load modules";
+				return;
+			}
+		})
+		.catch((err) => {
+			modulesElem.innerHTML = "Failed to load modules<br/>" + err;
+			return;
+		});
 }
