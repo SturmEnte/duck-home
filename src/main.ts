@@ -32,6 +32,7 @@ app.all("*", (req, res) => {
 });
 
 app.use(express.static(path(__dirname, "public")));
+app.use(express.static(path(__dirname, "public", "modules"))); // The modules are in their own folder so the public folder is better organized but I still want to be able to access them in the root directory
 
 app.use("/api", api);
 
