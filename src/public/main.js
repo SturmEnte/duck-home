@@ -47,14 +47,25 @@ function sidebarLoaded() {
 	};
 
 	const modulesElem = document.getElementById("modules");
+	const moduleTemplate = document.getElementById("module");
 
 	// Load modules
 	fetch("/modules.json")
-		.then((res) => {
+		.then(async (res) => {
 			if (res.status != 200) {
 				modulesElem.innerHTML = "Failed to load modules";
 				return;
 			}
+
+			const modules = await res.json();
+			modules.forEach((module) => {
+				let elem = moduleTemplate.content.cloneNode(true);
+
+				elem.getElementById("link").href = `/${module.id}`;
+				elem.getElementById("name").innerHTML = module.name;
+
+				modulesElem.appendChild(elem);
+			});
 		})
 		.catch((err) => {
 			modulesElem.innerHTML = "Failed to load modules<br/>" + err;

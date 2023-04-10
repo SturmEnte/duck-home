@@ -26,6 +26,26 @@ body {
 #modules {
 	width: var(--sidebar-width);
 	height: calc(100vh - 2 * var(--tb-height));
+	overflow-x: hidden;
+}
+
+#modules::-webkit-scrollbar {
+	display: none;
+}
+
+.module {
+	text-decoration: none;
+	width: var(--sidebar-width);
+	height: var(--tb-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: solid 1px var(--bg-prim);
+	transition: all ease-in-out 0.3s;
+}
+
+.module:hover {
+	background: #272727;
 }
 
 #bottom {
