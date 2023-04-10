@@ -64,6 +64,8 @@ function sidebarLoaded() {
 				elem.getElementById("link").href = `/${module.id}`;
 				elem.getElementById("name").innerHTML = module.name;
 
+				if (window.location.href.includes(module.id)) elem.getElementById("link").setAttribute("active", "");
+
 				modulesElem.appendChild(elem);
 			});
 		})

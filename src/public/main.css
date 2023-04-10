@@ -42,8 +42,13 @@ body {
 	justify-content: center;
 	border-bottom: solid 1px var(--bg-prim);
 	transition: all ease-in-out 0.3s;
+	font-size: 1.3rem;
 }
 
+.module[active],
+.module[active]:hover {
+	background: var(--accent);
+}
 .module:hover {
 	background: #272727;
 }
