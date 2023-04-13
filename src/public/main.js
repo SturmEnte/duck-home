@@ -74,3 +74,18 @@ function sidebarLoaded() {
 			return;
 		});
 }
+
+// Service worker
+
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker
+		.register("/sw.js")
+		.then(() => {
+			console.log("SW registered");
+		})
+		.catch((err) => {
+			console.log("Error while registering SW:", err);
+		});
+} else {
+	console.log("SW no supported");
+}
