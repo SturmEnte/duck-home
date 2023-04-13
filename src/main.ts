@@ -37,7 +37,8 @@ app.use(express.static(path(__dirname, "public", "modules"))); // The modules ar
 app.use("/api", api);
 
 app.all("*", (req, res) => {
-	res.status(404).sendFile(path(__dirname, "public", "404/404.html"));
+	if (!req.url.includes("404")) res.status(404);
+	res.sendFile(path(__dirname, "public", "404/404.html"));
 });
 
 app.listen(process.env.PORT, () => {
