@@ -1,15 +1,16 @@
 const STATIC_CACHE = "STATIC-V1";
-const DYNAMIC_CACHE = "DYNAMIC";
+const MODULES_CACHE = "MODULES";
 
 const ASSETS = ["/", "/index.js", "/index.css", "/global.css", "/main.css", "main.js", "/modules.json", "/sidebar.html", "/404/"];
 
 self.addEventListener("install", async (event) => {
-	let cache = await caches.open(STATIC_CACHE);
+	let cache;
+
+	cache = await caches.open(STATIC_CACHE);
 	cache.addAll(ASSETS);
 
-	cache = await caches.open(DYNAMIC_CACHE);
-
 	// Cache all modules
+	cache = await caches.open(MODULES_CACHE);
 	const modules = await (await fetch("/modules.json")).json();
 	modules.forEach((module) => {
 		cache.add(`/${module.id}/`);
