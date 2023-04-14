@@ -1,9 +1,9 @@
 import { Router, json } from "express";
 
-import signup from "./auth/signup";
-import login from "./auth/login";
-import logout from "./auth/logout";
-import user from "./user";
+import signup from "./api/auth/signup";
+import login from "./api/auth/login";
+import logout from "./api/auth/logout";
+import user from "./api/user";
 
 import Token from "../models/Token";
 

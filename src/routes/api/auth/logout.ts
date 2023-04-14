@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import Token from "../../models/Token";
+import Token from "../../../models/Token";
 
 const router = Router();
 

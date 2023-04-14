@@ -2,7 +2,7 @@ import { Router, json } from "express";
 
 import signup from "./auth/signup";
 import login from "./auth/login";
-import User from "../models/User";
+import User from "../../models/User";
 
 const router = Router();
 

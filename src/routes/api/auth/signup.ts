@@ -2,7 +2,7 @@ import { Router } from "express";
 import { v4 as uuid } from "uuid";
 import { hashSync } from "bcrypt";
 
-import User from "../../models/User";
+import User from "../../../models/User";
 
 const router = Router();
 

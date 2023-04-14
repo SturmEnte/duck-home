@@ -2,8 +2,8 @@ import { Router } from "express";
 import { compareSync } from "bcrypt";
 import { randomBytes } from "crypto";
 
-import User from "../../models/User";
-import Token from "../../models/Token";
+import User from "../../../models/User";
+import Token from "../../../models/Token";
 
 const router = Router();
 
