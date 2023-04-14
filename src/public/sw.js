@@ -38,7 +38,7 @@ self.addEventListener("fetch", async (event) => {
 					})
 					.catch(() => {
 						console.log("Catch");
-						return caches.match("/404").then((res) => {
+						return caches.match("/404/").then((res) => {
 							return res;
 						});
 					})
