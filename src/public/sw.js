@@ -28,8 +28,10 @@ self.addEventListener("fetch", async (event) => {
 		event.respondWith(
 			fetch(event.request)
 				.then(async (res) => {
-					let cache = await caches.open(API_CACHE);
-					await cache.put(event.request, res.clone());
+					if (event.request.method.toLowerCase() == "get") {
+						let cache = await caches.open(API_CACHE);
+						await cache.put(event.request, res.clone());
+					}
 					return res;
 				})
 				.catch(() => {
