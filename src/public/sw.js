@@ -6,6 +6,7 @@ const ASSETS = ["/", "/index.js", "/index.css", "/global.css", "/main.css", "mai
 self.addEventListener("install", async (event) => {
 	let cache;
 
+	// Cache static assets
 	cache = await caches.open(STATIC_CACHE);
 	cache.addAll(ASSETS);
 
