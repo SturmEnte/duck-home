@@ -1,5 +1,6 @@
 const STATIC_CACHE = "STATIC-V1";
 const MODULES_CACHE = "MODULES";
+const API_CACHE = "API";
 
 const ASSETS = ["/", "/index.js", "/index.css", "/global.css", "/main.css", "main.js", "/modules.json", "/sidebar.html", "/404/"];
 
@@ -24,7 +25,17 @@ self.addEventListener("fetch", async (event) => {
 	console.log(event);
 
 	if (event.request.url.includes("api")) {
-		event.respondWith(fetch(event.request));
+		event.respondWith(
+			fetch(event.request)
+				.then(async (res) => {
+					let cache = await caches.open(API_CACHE);
+					await cache.put(event.request, res.clone());
+					return res;
+				})
+				.catch(() => {
+					return caches.match(event.request);
+				})
+		);
 		return;
 	}
 
