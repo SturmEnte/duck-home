@@ -4,6 +4,7 @@ import signup from "./api/auth/signup";
 import login from "./api/auth/login";
 import logout from "./api/auth/logout";
 import user from "./api/user";
+import updates from "./api/updates";
 
 import Token from "../models/Token";
 
@@ -32,5 +33,6 @@ router.all("*", async (req, res, next) => {
 });
 
 router.use("/user", user);
+router.use("/updates", updates);
 
 export default router;
