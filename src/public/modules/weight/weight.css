@@ -2,6 +2,11 @@
 	padding: 10px;
 }
 
+#header {
+	margin-bottom: 10px;
+	height: 50px;
+}
+
 #header *,
 input,
 #create-popup-btn {
@@ -66,4 +71,39 @@ input,
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+#data {
+	height: calc(100vh - 4 * 10px - 2 * 50px);
+	background: green;
+}
+
+#footer {
+	height: 50px;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#footer input {
+	width: 150px;
+}
+
+#date {
+	text-align: center;
+}
+
+#weight {
+	text-align: right;
+}
+
+#unit {
+	position: relative;
+	left: -10px;
+	font-size: 1.3rem;
+}
+
+#set-entry-btn {
+	font-size: 1.3rem;
 }
