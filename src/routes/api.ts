@@ -41,8 +41,8 @@ router.use("/user", user);
 router.use("/updates", updates);
 
 // Weight
-router.use("/createEntity", createEntity);
-router.use("/entities", entities);
-router.use("/setEntry", setEntry);
+router.use("/weight/createEntity", createEntity);
+router.use("/weight/entities", entities);
+router.use("/weight/setEntry", setEntry);
 
 export default router;
