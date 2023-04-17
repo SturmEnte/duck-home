@@ -5,7 +5,7 @@ import WeightEntity from "../../../models/WeightEntity";
 interface Entity {
 	name: string;
 	unit: string;
-	weight: { date: Date; weight: number }[];
+	weight: { date: number; weight: number }[];
 }
 
 const router = Router();
