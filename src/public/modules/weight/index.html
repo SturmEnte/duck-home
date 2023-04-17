@@ -11,6 +11,21 @@
 		<script src="/main.js"></script>
 	</head>
 	<body>
-		<div id="content">Weight Tracker</div>
+		<div id="content">
+			<div id="header">
+				<select name="entity" id="entity"></select>
+				<button id="create-btn">Create new entity</button>
+			</div>
+			<div id="curtain" style="display: none">
+				<div id="create-popup">
+					<label for="name">Name:</label>
+					<input type="text" id="name" />
+					<label for="unit">Unit:</label>
+					<input type="text" id="unit" />
+					<button id="create-popup-btn">Create entity</button>
+					<button id="cancel">x</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

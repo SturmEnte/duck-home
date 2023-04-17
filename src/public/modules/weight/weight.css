@@ -1,0 +1,68 @@
+#content {
+	padding: 10px;
+}
+
+#header *,
+input,
+#create-popup-btn {
+	width: 250px;
+	height: 50px;
+	border: none;
+	border-radius: var(--border-radius);
+	background: var(--bg-sec);
+	font-size: 1.3rem;
+	margin-right: 10px;
+	padding: 0;
+}
+
+#create-btn {
+	background: var(--accent);
+}
+
+#curtain {
+	z-index: 2;
+	background: rgba(0, 0, 0, 0.3);
+	width: calc(100vw - var(--sidebar-width));
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: var(--sidebar-width);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#create-popup {
+	z-index: 3;
+	padding: 25px;
+	box-sizing: border-box;
+	background: var(--bg-sec);
+	width: var(--popup-width);
+	height: var(--popup-height);
+	border-radius: var(--border-radius);
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+}
+
+#create-popup * {
+	font-size: 1.3rem;
+}
+
+#create-popup input {
+	background: var(--bg-prim);
+	margin-bottom: 25px;
+}
+
+#create-popup-btn {
+	background: var(--accent);
+}
+
+#cancel {
+	width: min-content;
+	height: min-content;
+	background: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}

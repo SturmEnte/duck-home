@@ -71,6 +71,7 @@ body {
 #content {
 	width: calc(100vw - 350px);
 	height: 100vh;
+	box-sizing: border-box;
 }
 
 button {
