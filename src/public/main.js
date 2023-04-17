@@ -1,8 +1,7 @@
 // Load sidebar
 fetch("/sidebar.html").then((res) => {
 	res.text().then((data) => {
-		let oldBody = document.body.innerHTML;
-		document.body.innerHTML = data + oldBody;
+		document.getElementById("sidebar").innerHTML = data;
 		sidebarLoaded();
 	});
 });
