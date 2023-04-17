@@ -14,7 +14,7 @@
 		<div id="content">
 			<div id="header">
 				<select name="entity" id="entity"></select>
-				<button id="create-btn">Create new entity</button>
+				<button id="create-btn" onclick="setPopupState(true)">Create new entity</button>
 			</div>
 			<div id="curtain" style="display: none">
 				<div id="create-popup">
@@ -22,8 +22,8 @@
 					<input type="text" id="name" />
 					<label for="unit">Unit</label>
 					<input type="text" id="unit" />
-					<button id="create-popup-btn">Create entity</button>
-					<button id="cancel">x</button>
+					<button id="create-popup-btn" onclick="createEntity()">Create entity</button>
+					<button id="cancel" onclick="setPopupState(false)">x</button>
 				</div>
 			</div>
 		</div>

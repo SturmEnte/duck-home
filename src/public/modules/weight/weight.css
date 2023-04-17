@@ -52,6 +52,7 @@ input,
 #create-popup input {
 	background: var(--bg-prim);
 	margin-bottom: 25px;
+	padding-left: 10px;
 }
 
 #create-popup-btn {
