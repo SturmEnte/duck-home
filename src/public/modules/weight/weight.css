@@ -86,7 +86,8 @@ input,
 	justify-content: flex-start;
 }
 
-#footer input {
+#footer input,
+#set-entry-btn {
 	width: 150px;
 }
 
