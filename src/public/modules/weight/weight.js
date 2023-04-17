@@ -1,3 +1,4 @@
+const entitiesElem = document.getElementById("entities");
 const nameElem = document.getElementById("name");
 const unitElem = document.getElementById("unit");
 
@@ -18,3 +19,19 @@ function setPopupState(state) {
 		popup.style.display = "none";
 	}
 }
+
+fetch("/api/weight/entities", {
+	method: "get",
+	headers: {
+		Authorization: localStorage.getItem("token"),
+	},
+}).then((res) => {
+	res.json().then((data) => {
+		data.forEach((entity) => {
+			const option = document.createElement("option");
+			option.value = entity.name;
+			option.innerText = entity.name;
+			entitiesElem.appendChild(option);
+		});
+	});
+});
