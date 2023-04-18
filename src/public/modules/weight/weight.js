@@ -1,6 +1,7 @@
 const entitiesElem = document.getElementById("entities");
 const nameElem = document.getElementById("name");
 const unitElem = document.getElementById("unit");
+const unitTextElem = document.getElementById("unit-text");
 const dateElem = document.getElementById("date");
 const weightElem = document.getElementById("weight");
 
@@ -8,6 +9,9 @@ document.getElementById("create-popup-btn").onclick = createEntity;
 document.getElementById("create-btn").onclick = () => setPopupState(true);
 document.getElementById("cancel").onclick = () => setPopupState(false);
 document.getElementById("set-entry-btn").onclick = setEntry;
+
+let entities = [];
+let selectedEntity;
 
 function setEntry() {
 	const date = dateElem.value;
@@ -53,10 +57,14 @@ function createEntity() {
 		unitElem.value = "";
 		setPopupState(false);
 
-		const option = document.createElement("option");
-		option.value = name;
-		option.innerText = name;
-		entitiesElem.appendChild(option);
+		const entity = {
+			name,
+			unit,
+		};
+
+		entities.push(entity);
+		updateEntitiesList();
+		selectEntity(name);
 	});
 }
 
@@ -77,11 +85,38 @@ fetch("/api/weight/entities", {
 	},
 }).then((res) => {
 	res.json().then((data) => {
-		data.forEach((entity) => {
-			const option = document.createElement("option");
-			option.value = entity.name;
-			option.innerText = entity.name;
-			entitiesElem.appendChild(option);
-		});
+		entities = data;
+		updateEntitiesList();
 	});
 });
+
+function updateEntitiesList() {
+	entitiesElem.innerHTML = "";
+
+	entities.forEach((entity) => {
+		const option = document.createElement("option");
+		option.value = entity.name;
+		option.innerText = entity.name;
+		entitiesElem.appendChild(option);
+	});
+
+	if (!selectedEntity) {
+		selectEntity(entities[0].name);
+	}
+}
+
+function selectEntity(entityName) {
+	let entity;
+
+	entities.forEach((e) => {
+		if (e.name == entityName) entity = e;
+	});
+
+	selectedEntity = entity;
+	entitiesElem.value = selectedEntity.name;
+	unitTextElem.innerText = selectedEntity.unit;
+}
+
+entitiesElem.oninput = () => {
+	selectEntity(entitiesElem.value);
+};
