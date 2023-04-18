@@ -1,10 +1,21 @@
 const entitiesElem = document.getElementById("entities");
 const nameElem = document.getElementById("name");
 const unitElem = document.getElementById("unit");
+const dateElem = document.getElementById("date");
+const weightElem = document.getElementById("weight");
 
 document.getElementById("create-popup-btn").onclick = createEntity;
 document.getElementById("create-btn").onclick = () => setPopupState(true);
 document.getElementById("cancel").onclick = () => setPopupState(false);
+document.getElementById("set-entry-btn").onclick = () => setEntry;
+
+function setEntry() {
+	const date = dateElem.value;
+	const weight = weightElem.value;
+
+	console.log("Set entry");
+	console.log(date, weight);
+}
 
 function createEntity() {
 	const name = nameElem.value;
