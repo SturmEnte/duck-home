@@ -85,5 +85,5 @@ if ("serviceWorker" in navigator) {
 			console.log("Error while registering SW:", err);
 		});
 } else {
-	console.log("SW no supported");
+	console.log("SW not supported");
 }
