@@ -7,7 +7,46 @@ document.getElementById("create-btn").onclick = () => setPopupState(true);
 document.getElementById("cancel").onclick = () => setPopupState(false);
 
 function createEntity() {
-	console.log("Create Entity");
+	const name = nameElem.value;
+	const unit = unitElem.value;
+
+	if (!name) {
+		alert("A name is required");
+		return;
+	}
+
+	if (!unit) {
+		alert("A unit is required");
+		return;
+	}
+
+	fetch("/api/weight/createEntity", {
+		method: "post",
+		headers: {
+			Authorization: localStorage.getItem("token"),
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			name,
+			unit,
+		}),
+	}).then((res) => {
+		if (!res.ok) {
+			res.json().then((data) => {
+				alert(data.error);
+				return;
+			});
+		}
+
+		nameElem.value = "";
+		unitElem.value = "";
+		setPopupState(false);
+
+		const option = document.createElement("option");
+		option.value = name;
+		option.innerText = name;
+		entitiesElem.appendChild(option);
+	});
 }
 
 function setPopupState(state) {
