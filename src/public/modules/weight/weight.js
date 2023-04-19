@@ -60,6 +60,7 @@ function createEntity() {
 		const entity = {
 			name,
 			unit,
+			weight: [],
 		};
 
 		entities.push(entity);
@@ -103,6 +104,14 @@ function updateEntitiesList() {
 	if (!selectedEntity) {
 		selectEntity(entities[0].name);
 	}
+}
+
+function updateWeightData() {
+	data.innerHTML = "";
+
+	selectedEntity.weight.forEach((entry) => {
+		data.innerHTML += `${entry.date} ${entry.weight}`;
+	});
 }
 
 function selectEntity(entityName) {
