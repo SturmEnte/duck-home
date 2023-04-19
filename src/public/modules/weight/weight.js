@@ -4,6 +4,7 @@ const unitElem = document.getElementById("unit");
 const unitTextElem = document.getElementById("unit-text");
 const dateElem = document.getElementById("date");
 const weightElem = document.getElementById("weight");
+const dataElem = document.getElementById("data");
 
 document.getElementById("create-popup-btn").onclick = createEntity;
 document.getElementById("create-btn").onclick = () => setPopupState(true);
