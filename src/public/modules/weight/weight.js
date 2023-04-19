@@ -110,7 +110,7 @@ function updateWeightData() {
 	data.innerHTML = "";
 
 	selectedEntity.weight.forEach((entry) => {
-		data.innerHTML += `${entry.date} ${entry.weight}`;
+		data.innerHTML += `${entry.date} ${entry.weight}<br/>`;
 	});
 }
 
