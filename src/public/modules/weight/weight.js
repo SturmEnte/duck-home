@@ -124,6 +124,7 @@ function selectEntity(entityName) {
 	selectedEntity = entity;
 	entitiesElem.value = selectedEntity.name;
 	unitTextElem.innerText = selectedEntity.unit;
+	updateWeightData();
 }
 
 entitiesElem.oninput = () => {
