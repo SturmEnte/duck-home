@@ -14,11 +14,42 @@ let entities = [];
 let selectedEntity;
 
 function setEntry() {
-	const date = dateElem.value;
-	const weight = weightElem.value;
+	let date = dateElem.value;
+	let weight = weightElem.value;
+
+	console.log(weight);
+
+	if (!date) {
+		alert("A date is required");
+		return;
+	}
+
+	if (!weight) {
+		alert("A weight is required");
+		return;
+	}
+
+	date = Number(date.replace("-", "").replace("-", ""));
+	weight = Number(weight);
 
 	console.log("Set entry");
 	console.log(date, weight);
+
+	fetch("/api/weight/setEntry", {
+		method: "post",
+		headers: {
+			Authorization: localStorage.getItem("token"),
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			name: selectedEntity.name,
+			date,
+			weight,
+		}),
+	});
+
+	selectedEntity.weight.push({ date, weight });
+	updateWeightData();
 }
 
 function createEntity() {
