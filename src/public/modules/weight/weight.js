@@ -138,12 +138,54 @@ function updateEntitiesList() {
 	}
 }
 
+const chart = new Chart(dataElem, {
+	type: "line",
+	data: {
+		labels: [],
+		datasets: [
+			{
+				data: [],
+				borderWidth: 1,
+				borderColor: "#3ba555",
+				pointBackgroundColor: "#3ba555",
+			},
+		],
+	},
+	options: {
+		scales: {
+			y: {
+				beginAtZero: true,
+			},
+		},
+		plugins: {
+			legend: {
+				display: false,
+			},
+		},
+	},
+});
+
 function updateWeightData() {
-	data.innerHTML = "";
+	selectedEntity.weight.sort((a, b) => {
+		return a.date - b.date;
+	});
+
+	labels = [];
+	data = [];
 
 	selectedEntity.weight.forEach((entry) => {
-		data.innerHTML += `${entry.date} ${entry.weight}<br/>`;
+		// Turns the number date (for example 20231122) into a date string with the formatting DD.MM.YYYY (for example 20231122 -> 22.11.2023)
+		let dateString = String(entry.date);
+		labels.push(`${dateString.slice(6)}.${dateString.slice(4, 6)}.${dateString.slice(0, 4)}`);
+
+		data.push(entry.weight);
 	});
+
+	console.table(data);
+
+	chart.data.labels = labels;
+	chart.data.datasets[0].data = data;
+	chart.update();
 }
 
 function selectEntity(entityName) {

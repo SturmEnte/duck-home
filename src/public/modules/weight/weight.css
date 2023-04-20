@@ -75,7 +75,6 @@ input,
 
 #data {
 	height: calc(100vh - 4 * 10px - 2 * 50px);
-	background: green;
 }
 
 #footer {
