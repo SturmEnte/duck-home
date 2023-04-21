@@ -134,6 +134,8 @@ fetch("/api/weight/entities", {
 function updateEntitiesList() {
 	entitiesElem.innerHTML = "";
 
+	entities.sort((a, b) => a.name.localeCompare(b.name));
+
 	entities.forEach((entity) => {
 		const option = document.createElement("option");
 		option.value = entity.name;
