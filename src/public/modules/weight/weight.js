@@ -49,7 +49,15 @@ function setEntry() {
 		}),
 	});
 
-	selectedEntity.weight.push({ date, weight });
+	let found = false;
+
+	selectedEntity.weight.forEach((entry) => {
+		if (entry.date != date) return;
+		found = true;
+		entry.weight = weight;
+	});
+
+	if (!found) selectedEntity.weight.push({ date, weight });
 	updateWeightData();
 }
 
