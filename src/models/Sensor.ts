@@ -17,9 +17,18 @@ export default model(
 		},
 		sensors: [
 			{
-				id: String,
-				name: String,
-				unit: String,
+				id: {
+					required: true,
+					type: String,
+				},
+				name: {
+					required: true,
+					type: String,
+				},
+				unit: {
+					required: true,
+					type: String,
+				},
 			},
 		],
 		created: {
