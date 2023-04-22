@@ -11,6 +11,8 @@ import createEntity from "./api/weight/createEntity";
 import entities from "./api/weight/entities";
 import setEntry from "./api/weight/setEntry";
 
+import add from "./api/data/addData";
+
 import Token from "../models/Token";
 
 const router = Router();
@@ -44,5 +46,8 @@ router.use("/updates", updates);
 router.use("/weight/createEntity", createEntity);
 router.use("/weight/entities", entities);
 router.use("/weight/setEntry", setEntry);
+
+// Data
+router.use("/data/add", add);
 
 export default router;
