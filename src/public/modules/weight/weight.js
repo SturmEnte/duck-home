@@ -49,7 +49,15 @@ function setEntry() {
 		}),
 	});
 
-	selectedEntity.weight.push({ date, weight });
+	let found = false;
+
+	selectedEntity.weight.forEach((entry) => {
+		if (entry.date != date) return;
+		found = true;
+		entry.weight = weight;
+	});
+
+	if (!found) selectedEntity.weight.push({ date, weight });
 	updateWeightData();
 }
 
@@ -125,6 +133,8 @@ fetch("/api/weight/entities", {
 
 function updateEntitiesList() {
 	entitiesElem.innerHTML = "";
+
+	entities.sort((a, b) => a.name.localeCompare(b.name));
 
 	entities.forEach((entity) => {
 		const option = document.createElement("option");
