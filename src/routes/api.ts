@@ -11,6 +11,8 @@ import createEntity from "./api/weight/createEntity";
 import entities from "./api/weight/entities";
 import setEntry from "./api/weight/setEntry";
 
+import registerSensor from "./api/sensor/registerSensor";
+
 import add from "./api/data/addData";
 
 import Token from "../models/Token";
@@ -49,5 +51,8 @@ router.use("/weight/setEntry", setEntry);
 
 // Data
 router.use("/data/add", add);
+
+// Sensor
+router.use("/sensor/register", registerSensor);
 
 export default router;
