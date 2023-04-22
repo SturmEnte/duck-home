@@ -50,7 +50,7 @@ router.use("/weight/entities", entities);
 router.use("/weight/setEntry", setEntry);
 
 // Data
-router.use("/data/add", add);
+// router.use("/data/add", add);
 
 // Sensor
 router.use("/sensor/register", registerSensor);
