@@ -13,8 +13,7 @@ connect(String(process.env.DB_URI))
 		console.log("Connected to database");
 	})
 	.catch((err) => {
-		console.log("Error while connecting to the database");
-		console.log(err);
+		console.log("Error while connecting to the database:", err);
 		process.exit();
 	});
 
@@ -23,7 +22,6 @@ const app = express();
 app.use(cookieParser());
 
 app.all("*", (req, res) => {
-	console.log(req.url);
 	if (!req.cookies.loggedIn && !ignore(req.url)) {
 		res.redirect("/login");
 		return;

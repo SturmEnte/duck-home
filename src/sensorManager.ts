@@ -13,7 +13,6 @@ type Sensors = {
 
 export function registerSensor(id: string, url: string, s: Sensors[], userId: string) {
 	const interval = setInterval(() => {
-		console.table({ id, url, s, userId });
 		axios
 			.get(url)
 			.then((res) => {
@@ -43,7 +42,6 @@ export function registerSensor(id: string, url: string, s: Sensors[], userId: st
 // Load sensors
 Sensor.find()
 	.then((docs) => {
-		console.log(docs);
 		docs.forEach((sensor) => {
 			registerSensor(sensor.id, sensor.url, sensor.sensors, sensor.user_id);
 		});
