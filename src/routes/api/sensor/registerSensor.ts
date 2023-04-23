@@ -13,8 +13,6 @@ router.post("/", async (req, res) => {
 	const sensors = req.body.sensors;
 	const userId = req.headers.authorization?.split(".")[1];
 
-	console.table({ url, sensors });
-
 	if (!req.body.url) {
 		res.status(400).json({
 			error: "No url",
