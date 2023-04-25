@@ -22,9 +22,9 @@ const router = Router();
 router.use(json());
 
 // Authentication
-router.use("/signup", signup);
-router.use("/login", login);
-router.use("/logout", logout);
+router.use("/auth/signup", signup);
+router.use("/auth/login", login);
+router.use("/auth/logout", logout);
 
 // Check if user is authenticated
 router.all("*", async (req, res, next) => {

@@ -22,7 +22,7 @@ fetch("/api/user", {
 function sidebarLoaded() {
 	// Logout button
 	document.getElementById("logout").onclick = () => {
-		fetch("/api/logout", {
+		fetch("/api/auth/logout", {
 			method: "delete",
 			headers: {
 				"Content-Type": "application/json",

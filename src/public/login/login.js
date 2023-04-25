@@ -16,7 +16,7 @@ loginBtn.onclick = () => {
 		return;
 	}
 
-	fetch("/api/login", {
+	fetch("/api/auth/login", {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
