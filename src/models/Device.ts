@@ -11,24 +11,19 @@ export default model(
 			required: true,
 			type: String,
 		},
+		type: {
+			required: true,
+			type: String,
+		},
 		url: {
 			required: true,
 			type: String,
 		},
 		sensors: [
 			{
-				id: {
-					required: true,
-					type: String,
-				},
-				name: {
-					required: true,
-					type: String,
-				},
-				unit: {
-					required: true,
-					type: String,
-				},
+				id: String,
+				name: String,
+				unit: String,
 			},
 		],
 		created: {

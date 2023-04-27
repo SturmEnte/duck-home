@@ -36,6 +36,7 @@ router.post("/", async (req, res) => {
 	Device.create({
 		id,
 		user_id: userId,
+		type: "sensors",
 		url,
 		sensors,
 		created: Date.now(),

@@ -5,11 +5,7 @@ import Data from "./models/Data";
 
 let devices: Map<string, NodeJS.Timer> = new Map();
 
-type Sensor = {
-	name: string;
-	id: string;
-	unit: string;
-};
+type Sensor = { id?: string; name?: string; unit?: string };
 
 export function registerDevice(id: string, url: string, sensors: Sensor[], userId: string) {
 	const interval = setInterval(() => {
