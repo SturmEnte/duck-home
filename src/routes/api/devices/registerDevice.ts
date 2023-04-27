@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { randomUUID as uuid } from "crypto";
 
-import { registerSensor } from "../../../sensorManager";
+import { registerDevice } from "../../../deviceManager";
 
-import Sensor from "../../../models/Sensor";
+import Device from "../../../models/Device";
 
 const router = Router();
 
@@ -21,19 +21,19 @@ router.post("/", async (req, res) => {
 
 	if (!req.body.sensors) {
 		res.status(400).json({
-			error: "No sensors",
+			error: "No devices",
 		});
 		return;
 	}
 
-	if (await Sensor.exists({ url, user_id: userId })) {
+	if (await Device.exists({ url, user_id: userId })) {
 		res.status(400).json({
-			error: "Sensor is already registered",
+			error: "Device is already registered",
 		});
 		return;
 	}
 
-	Sensor.create({
+	Device.create({
 		id,
 		user_id: userId,
 		url,
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
 	})
 		.then(() => {
 			res.sendStatus(201);
-			registerSensor(id, url, sensors, String(userId));
+			registerDevice(id, url, sensors, String(userId));
 		})
 		.catch((err) => {
 			res.status(500).json({ error: "Error while registering sensor" });

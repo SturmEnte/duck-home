@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export default model(
-	"sensor",
+	"device",
 	new Schema({
 		id: {
 			required: true,

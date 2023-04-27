@@ -1,29 +1,29 @@
 import axios from "axios";
 
-import Sensor from "./models/Sensor";
+import Device from "./models/Device";
 import Data from "./models/Data";
 
-let sensors: Map<string, NodeJS.Timer> = new Map();
+let devices: Map<string, NodeJS.Timer> = new Map();
 
-type Sensors = {
+type Sensor = {
 	name: string;
 	id: string;
 	unit: string;
 };
 
-export function registerSensor(id: string, url: string, s: Sensors[], userId: string) {
+export function registerDevice(id: string, url: string, sensors: Sensor[], userId: string) {
 	const interval = setInterval(() => {
 		axios
 			.get(url)
 			.then((res) => {
-				s.forEach((sensor) => {
+				sensors.forEach((sensor) => {
 					if (!res.data[sensor.id]) {
 						console.log("Sensor id", sensor.id, "not found in data of sensor", id);
 						return;
 					}
 
 					Data.create({
-						sensorDocId: id,
+						deviceId: id,
 						sensorId: sensor.id,
 						data: res.data[sensor.id],
 						timestamp: Date.now(),
@@ -36,16 +36,16 @@ export function registerSensor(id: string, url: string, s: Sensors[], userId: st
 				console.log("Error while fetching sensor data for sensor with id ", id, ":", err);
 			});
 	}, 1000 * 60);
-	sensors.set(id, interval);
+	devices.set(id, interval);
 }
 
 // Load sensors
-Sensor.find()
+Device.find()
 	.then((docs) => {
-		docs.forEach((sensor) => {
-			registerSensor(sensor.id, sensor.url, sensor.sensors, sensor.user_id);
+		docs.forEach((device) => {
+			registerDevice(device.id, device.url, device.sensors, device.user_id);
 		});
 	})
 	.catch((err) => {
-		console.log("Failed to load sensors: ", err);
+		console.log("Failed to load devices: ", err);
 	});
