@@ -35,7 +35,7 @@ export function registerDevice(id: string, url: string, sensors: Sensor[], userI
 	devices.set(id, interval);
 }
 
-// Load sensors
+// Load devices
 Device.find()
 	.then((docs) => {
 		docs.forEach((device) => {
