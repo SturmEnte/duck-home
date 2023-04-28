@@ -15,6 +15,10 @@ export default model(
 			required: true,
 			type: String,
 		},
+		name: {
+			required: true,
+			type: String,
+		},
 		url: {
 			required: true,
 			type: String,

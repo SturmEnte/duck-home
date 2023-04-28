@@ -9,9 +9,16 @@ const router = Router();
 
 router.post("/", async (req, res) => {
 	const id = uuid();
+	const name = req.body.name;
 	const url = req.body.url;
 	const sensors = req.body.sensors;
 	const userId = req.headers.authorization?.split(".")[1];
+
+	if (!req.body.name) {
+		res.status(400).json({
+			error: "No name",
+		});
+	}
 
 	if (!req.body.url) {
 		res.status(400).json({
@@ -37,6 +44,7 @@ router.post("/", async (req, res) => {
 		id,
 		user_id: userId,
 		type: "sensors",
+		name,
 		url,
 		sensors,
 		created: Date.now(),
