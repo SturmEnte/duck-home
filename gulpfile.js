@@ -20,6 +20,9 @@ async function copy() {
 	await fs.copyFile("./package-lock.json", "./build/package-lock.json");
 	await fs.copyFile("./Dockerfile", "./build/Dockerfile");
 	await fs.copyFile("./.dockerignore", "./build/.dockerignore");
+	await fs.copyFile("./docker-build.sh", "./build/docker-build.sh");
+	await fs.copyFile("./docker-build.bat", "./build/docker-build.bat");
+	await fs.copyFile("./LICENSE", "./build/LICENSE");
 
 	return gulp.src("./src/public/**/*").pipe(gulp.dest("./build/src/public/"));
 }
