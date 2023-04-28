@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 export default model(
 	"data",
 	new Schema({
-		sensorDocId: {
+		deviceId: {
 			required: true,
 			type: String,
 		},
