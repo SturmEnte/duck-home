@@ -23,9 +23,13 @@ export function registerDevice(id: string, url: string, sensors: Sensor[], userI
 						sensorId: sensor.id,
 						data: res.data[sensor.id],
 						timestamp: Date.now(),
-					}).catch((err) => {
-						console.log("Error while saving data for sensor", sensor.id, "of", id, ":", err);
-					});
+					})
+						.then(() => {
+							console.log("Saved data of sensor", sensor.id, "of", id);
+						})
+						.catch((err) => {
+							console.log("Error while saving data for sensor", sensor.id, "of", id, ":", err);
+						});
 				});
 			})
 			.catch((err) => {
