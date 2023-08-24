@@ -8,15 +8,6 @@ import api from "./routes/api";
 
 const ignoreLoggedIn = ["login", "api", ".css", ".js", ".ico", ".json"];
 
-connect(String(process.env.DB_URI))
-	.then(() => {
-		console.log("Connected to database");
-	})
-	.catch((err) => {
-		console.log("Error while connecting to the database:", err);
-		process.exit();
-	});
-
 const app = express();
 
 app.use(cookieParser());
@@ -39,9 +30,18 @@ app.all("*", (req, res) => {
 	res.sendFile(path(__dirname, "public", "404/404.html"));
 });
 
-app.listen(process.env.PORT, () => {
-	console.log("Listening to port", process.env.PORT);
-});
+connect(String(process.env.DB_URI))
+	.then(() => {
+		console.log("Connected to database");
+
+		app.listen(process.env.PORT, () => {
+			console.log("Listening to port", process.env.PORT);
+		});
+	})
+	.catch((err) => {
+		console.log("Error while connecting to the database:", err);
+		process.exit();
+	});
 
 function ignore(url: string): boolean {
 	let ignore = false;
