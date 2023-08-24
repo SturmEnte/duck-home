@@ -2,5 +2,9 @@
 	{
 		"name": "Weight Tracker",
 		"id": "weight"
+	},
+	{
+		"name": "Shopping List",
+		"id": "shopping-list"
 	}
 ]
