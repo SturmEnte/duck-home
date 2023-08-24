@@ -5,6 +5,6 @@ fetch("/api/user", {
 	},
 }).then((res) => {
 	res.json().then((data) => {
-		document.getElementById("content").innerHTML = `Welcome back ${data.username}!`;
+		document.getElementById("welcome-message").innerHTML = `Welcome back ${data.username}!`;
 	});
 });

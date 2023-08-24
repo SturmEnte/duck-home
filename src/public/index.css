@@ -2,5 +2,31 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	font-size: 3rem;
+}
+
+#links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 2rem;
+	margin-top: 0.5rem;
+}
+
+#links * {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#links a {
+	margin-bottom: 0.5rem;
+}
+
+#links img {
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-right: 0.5rem;
 }
