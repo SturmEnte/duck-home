@@ -13,7 +13,7 @@ import setEntry from "./api/weight/setEntry";
 
 import registerDevice from "./api/devices/registerDevice";
 
-import add from "./api/data/addData";
+import getData from "./api/data/getData";
 
 import Token from "../models/Token";
 
@@ -50,7 +50,7 @@ router.use("/weight/entities", entities);
 router.use("/weight/setEntry", setEntry);
 
 // Data
-// router.use("/data/add", add);
+router.use("/data/get", getData);
 
 // Deices
 router.use("/device/register", registerDevice);
