@@ -1,10 +1,10 @@
 [
 	{
-		"name": "Weight Tracker",
-		"id": "weight"
+		"name": "Lists",
+		"id": "lists"
 	},
 	{
-		"name": "Shopping List",
-		"id": "shopping-list"
+		"name": "Weight Tracker",
+		"id": "weight"
 	}
 ]
