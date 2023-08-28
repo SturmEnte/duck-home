@@ -36,6 +36,10 @@ body {
 	display: none;
 }
 
+#content {
+	padding: 10px;
+}
+
 .module {
 	text-decoration: none;
 	width: var(--sidebar-width);
