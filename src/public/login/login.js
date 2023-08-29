@@ -38,6 +38,7 @@ function login() {
 			res.json().then((data) => {
 				if (res.status != 200) {
 					alert(data.error);
+					usernameElem.focus();
 					return;
 				}
 				localStorage.setItem("token", data.token);
@@ -47,5 +48,6 @@ function login() {
 		})
 		.catch((err) => {
 			alert(err);
+			usernameElem.focus();
 		});
 }
