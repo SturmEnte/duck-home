@@ -2,7 +2,19 @@ const STATIC_CACHE = "STATIC-V1";
 const MODULES_CACHE = "MODULES";
 const API_CACHE = "API";
 
-const ASSETS = ["/", "/index.js", "/index.css", "/global.css", "/main.css", "main.js", "/modules.json", "/sidebar.html", "/404/", "https://cdn.jsdelivr.net/npm/chart.js"];
+const ASSETS = [
+	"/",
+	"/index.js",
+	"/index.css",
+	"/global.css",
+	"/main.css",
+	"main.js",
+	"/modules.json",
+	"/sidebar.html",
+	"/404/",
+	"/icons/github-mark-white.svg",
+	"https://cdn.jsdelivr.net/npm/chart.js",
+];
 
 self.addEventListener("install", async (event) => {
 	let cache;
