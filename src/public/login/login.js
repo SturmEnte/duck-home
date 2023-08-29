@@ -2,7 +2,15 @@ const usernameElem = document.getElementById("username");
 const passwordElem = document.getElementById("password");
 const loginBtn = document.getElementById("button");
 
-loginBtn.onclick = () => {
+loginBtn.onclick = login;
+usernameElem.onkeydown = (event) => {
+	if (event.key == "Enter") passwordElem.focus();
+};
+passwordElem.onkeydown = (event) => {
+	if (event.key == "Enter") login();
+};
+
+function login() {
 	let username = usernameElem.value;
 	let password = passwordElem.value;
 
@@ -40,4 +48,4 @@ loginBtn.onclick = () => {
 		.catch((err) => {
 			alert(err);
 		});
-};
+}
