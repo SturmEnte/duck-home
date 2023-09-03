@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
 			console.log("Error while creating entity");
 			console.log(err);
 			res.status(500).json({
-				error: "Unknown error while crating entity",
+				error: "Unknown error while creating entity",
 			});
 		});
 });
