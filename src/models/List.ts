@@ -1,0 +1,15 @@
+import { Schema, model } from "mongoose";
+
+export default model(
+	"list",
+	new Schema({
+		user_id: {
+			required: true,
+			type: String,
+		},
+		name: {
+			required: true,
+			type: String,
+		},
+	})
+);

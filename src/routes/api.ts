@@ -15,6 +15,8 @@ import registerDevice from "./api/devices/registerDevice";
 
 import getData from "./api/data/getData";
 
+import createList from "./api/lists/create";
+
 import Token from "../models/Token";
 
 const router = Router();
@@ -54,5 +56,8 @@ router.use("/data/get", getData);
 
 // Deices
 router.use("/device/register", registerDevice);
+
+// Lists
+router.use("/lists/create", createList);
 
 export default router;
