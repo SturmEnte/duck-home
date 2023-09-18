@@ -16,6 +16,7 @@ import registerDevice from "./api/devices/registerDevice";
 import getData from "./api/data/getData";
 
 import createList from "./api/lists/create";
+import getLists from "./api/lists/lists";
 
 import Token from "../models/Token";
 
@@ -59,5 +60,6 @@ router.use("/device/register", registerDevice);
 
 // Lists
 router.use("/lists/create", createList);
+router.use("/lists/lists", getLists);
 
 export default router;
