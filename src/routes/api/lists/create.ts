@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { randomUUID } from "crypto";
 
 import List from "../../../models/List";
 
@@ -13,6 +14,7 @@ router.post("/", async (req, res) => {
 	}
 
 	const userId: string = String(req.headers.authorization?.split(".")[1]);
+	let id: string = randomUUID();
 	const name: string = req.body.name;
 
 	if (await List.exists({ user_id: userId, name: name })) {
@@ -22,7 +24,11 @@ router.post("/", async (req, res) => {
 		return;
 	}
 
-	List.create({ user_id: userId, name: name })
+	while (await List.exists({ id: id })) {
+		id = randomUUID();
+	}
+
+	List.create({ user_id: userId, id: id, name: name })
 		.then(() => {
 			res.sendStatus(201);
 		})

@@ -7,6 +7,10 @@ export default model(
 			required: true,
 			type: String,
 		},
+		id: {
+			required: true,
+			type: String,
+		},
 		name: {
 			required: true,
 			type: String,
