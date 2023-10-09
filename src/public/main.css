@@ -1,6 +1,7 @@
 :root {
 	--sidebar-width: 350px;
 	--tb-height: 80px;
+	--content-width: calc(100vw - 350px);
 }
 
 body {
@@ -36,10 +37,6 @@ body {
 	display: none;
 }
 
-#content {
-	padding: 10px;
-}
-
 .module {
 	text-decoration: none;
 	width: var(--sidebar-width);
@@ -73,9 +70,10 @@ body {
 }
 
 #content {
-	width: calc(100vw - 350px);
+	width: var(--content-width);
 	height: 100vh;
 	box-sizing: border-box;
+	padding: 10px;
 }
 
 button {
