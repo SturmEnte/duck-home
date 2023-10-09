@@ -1,3 +1,7 @@
+:root {
+	--create-height: 50px;
+}
+
 input {
 	width: 30%;
 	min-width: 300px;
@@ -14,4 +18,31 @@ input {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	height: var(--create-height);
+}
+
+#lists {
+	margin-top: 10px;
+	display: grid;
+	grid-gap: 5px;
+	width: calc(var(--content-width) - 2 * 10px);
+	height: calc(100vh - 3 * 10px - var(--create-height));
+
+	/* TODO: Change the overflow to auto without breaking the padding */
+	overflow-y: scroll;
+	padding-right: 10px;
+	box-sizing: border-box;
+
+	grid-template-columns: 1fr 1fr;
+}
+
+.list {
+	background: var(--bg-sec);
+	border-radius: var(--border-radius);
+	padding: 10px;
+	box-sizing: border-box;
+	white-space: initial;
+	word-wrap: break-word;
+	width: 100%;
+	max-width: calc((var(--content-width) - 2 * 10px) / 2);
 }

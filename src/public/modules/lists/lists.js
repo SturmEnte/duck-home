@@ -29,10 +29,22 @@ function updateLists() {
 function displayLists() {
 	lists.forEach((list) => {
 		const listElement = document.createElement("div");
-		(listElement.id = list.id), (listElement.innerText = list.name);
+		listElement.id = list.id;
+		listElement.classList.add("list");
+		listElement.innerText = list.name;
 
 		listsElement.appendChild(listElement);
 	});
 }
 
-updateLists();
+// updateLists();
+lists = [];
+
+for (let i = 0; i < 100; i++) {
+	lists.push({
+		name: "Test",
+		id: "test",
+	});
+}
+
+displayLists();
