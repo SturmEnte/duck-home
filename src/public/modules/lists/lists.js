@@ -37,14 +37,4 @@ function displayLists() {
 	});
 }
 
-// updateLists();
-lists = [];
-
-for (let i = 0; i < 100; i++) {
-	lists.push({
-		name: "Test",
-		id: "test",
-	});
-}
-
 displayLists();
