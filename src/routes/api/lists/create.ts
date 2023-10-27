@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 		id = randomUUID();
 	}
 
-	List.create({ user_id: userId, id: id, name: name })
+	List.create({ user_id: userId, id: id, name: name, created: Date.now() })
 		.then(() => {
 			res.sendStatus(201);
 		})

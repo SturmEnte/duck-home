@@ -15,5 +15,9 @@ export default model(
 			required: true,
 			type: String,
 		},
+		created: {
+			required: true,
+			type: Date,
+		},
 	})
 );
