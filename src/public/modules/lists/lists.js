@@ -48,5 +48,4 @@ function sortLists() {
 }
 
 updateLists();
-
 displayLists();
