@@ -45,4 +45,5 @@ input {
 	word-wrap: break-word;
 	width: 100%;
 	max-width: calc((var(--content-width) - 2 * 10px) / 2);
+	height: fit-content;
 }

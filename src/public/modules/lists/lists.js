@@ -16,6 +16,7 @@ function updateLists() {
 		.then((res) => {
 			res.json().then((data) => {
 				lists = data;
+				sortLists();
 				displayLists();
 			});
 		})
@@ -36,5 +37,16 @@ function displayLists() {
 		listsElement.appendChild(listElement);
 	});
 }
+
+function sortLists() {
+	console.log(lists);
+	lists.sort((a, b) => {
+		if (a.name < b.name) return -1;
+		else if (a.name > b.name) return 1;
+		return 0;
+	});
+}
+
+updateLists();
 
 displayLists();
