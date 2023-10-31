@@ -4,6 +4,7 @@ const listNameElement = document.getElementById("list-name");
 const ERRORS = {
 	updateError: "Error while updating lists",
 	creationError: "Error while creating list",
+	deletionError: "Error while deleting list",
 };
 
 let lists = [];
@@ -51,7 +52,41 @@ function displayLists() {
 }
 
 function deleteList(id) {
-	console.log(id);
+	let list = lists.find((list) => list.id == id);
+
+	if (!list) {
+		alert("List id was not found");
+		return;
+	}
+
+	if (prompt(`Are you sure you want to delete ${list.name}? Type "yes" to confirm.`) == "yes") {
+		fetch("/api/lists/delete", {
+			method: "delete",
+			headers: {
+				Authorization: localStorage.getItem("token"),
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ id: list.id }),
+		})
+			.then((res) => {
+				if (res.status != 204) {
+					try {
+						res.json().then((data) => {
+							error(data.error, "delete");
+						});
+					} catch {
+						error("Unknown error", "delete");
+					}
+
+					return;
+				}
+
+				lists = lists.filter((list) => list.id != id);
+				sortLists();
+				displayLists();
+			})
+			.catch((err) => error(err, "delete"));
+	}
 }
 
 function sortLists() {
@@ -76,10 +111,10 @@ document.getElementById("create-btn").onclick = () => {
 			if (res.status != 201) {
 				try {
 					res.json().then((data) => {
-						creationError(data.error);
+						error(data.error, "create");
 					});
 				} catch {
-					creationError("Unknown error");
+					error("Unknown error", "create");
 				}
 
 				return;
@@ -91,12 +126,17 @@ document.getElementById("create-btn").onclick = () => {
 				displayLists();
 			});
 		})
-		.catch(creationError);
+		.catch((err) => error(err, "create"));
 };
 
-function creationError(err) {
-	console.error("Error while creating list:\n" + err);
-	alert(ERRORS.creationError);
+function error(err, type) {
+	if (type == "create") {
+		console.error("Error while creating list:\n" + err);
+		alert(ERRORS.creationError);
+	} else if (type == "delete") {
+		console.error("Error while deleting list:\n" + err);
+		alert(ERRORS.deletionError);
+	}
 }
 
 updateLists();
