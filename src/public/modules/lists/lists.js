@@ -1,7 +1,9 @@
 const listsElement = document.getElementById("lists");
+const listNameElement = document.getElementById("list-name");
 
 const ERRORS = {
 	updateError: "Error while updating lists",
+	creationError: "Error while creating list",
 };
 
 let lists = [];
@@ -45,6 +47,44 @@ function sortLists() {
 		else if (a.name > b.name) return 1;
 		return 0;
 	});
+}
+
+document.getElementById("create-btn").onclick = () => {
+	const name = listNameElement.value;
+	console.log(name);
+	fetch("/api/lists/create", {
+		method: "post",
+		headers: {
+			Authorization: localStorage.getItem("token"),
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ name: name, return: true }),
+	})
+		.then((res) => {
+			if (res.status != 201) {
+				try {
+					res.json().then((data) => {
+						creationError(data.error);
+					});
+				} catch {
+					creationError("Unknown error");
+				}
+
+				return;
+			}
+
+			res.json().then((data) => {
+				lists.push(data);
+				sortLists();
+				displayLists();
+			});
+		})
+		.catch(creationError);
+};
+
+function creationError(err) {
+	console.error("Error while creating list:\n" + err);
+	alert(ERRORS.creationError);
 }
 
 updateLists();
