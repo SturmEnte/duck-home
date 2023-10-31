@@ -39,6 +39,7 @@ function displayLists() {
 
 		deleteButtonElement.innerText = "x";
 		deleteButtonElement.classList.add("list-delete-button");
+		deleteButtonElement.onclick = () => deleteList(list.id);
 
 		listElement.id = list.id;
 		listElement.classList.add("list");
@@ -47,6 +48,10 @@ function displayLists() {
 
 		listsElement.appendChild(listElement);
 	});
+}
+
+function deleteList(id) {
+	console.log(id);
 }
 
 function sortLists() {
