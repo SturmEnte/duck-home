@@ -46,4 +46,17 @@ input {
 	width: 100%;
 	max-width: calc((var(--content-width) - 2 * 10px) / 2);
 	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.list-delete-button {
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.list:hover .list-delete-button {
+	opacity: 100%;
 }

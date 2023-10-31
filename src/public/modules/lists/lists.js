@@ -32,9 +32,18 @@ function updateLists() {
 function displayLists() {
 	lists.forEach((list) => {
 		const listElement = document.createElement("div");
+		const contentElement = document.createElement("div");
+		const deleteButtonElement = document.createElement("div");
+
+		contentElement.innerText = list.name;
+
+		deleteButtonElement.innerText = "x";
+		deleteButtonElement.classList.add("list-delete-button");
+
 		listElement.id = list.id;
 		listElement.classList.add("list");
-		listElement.innerText = list.name;
+		listElement.appendChild(contentElement);
+		listElement.appendChild(deleteButtonElement);
 
 		listsElement.appendChild(listElement);
 	});
