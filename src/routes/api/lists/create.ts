@@ -1,4 +1,4 @@
-import { Router, json } from "express";
+import { Router } from "express";
 import { randomUUID } from "crypto";
 
 import List from "../../../models/List";
