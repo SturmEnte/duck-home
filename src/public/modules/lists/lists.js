@@ -50,7 +50,6 @@ function displayLists() {
 }
 
 function sortLists() {
-	console.log(lists);
 	lists.sort((a, b) => {
 		if (a.name < b.name) return -1;
 		else if (a.name > b.name) return 1;
@@ -60,7 +59,6 @@ function sortLists() {
 
 document.getElementById("create-btn").onclick = () => {
 	const name = listNameElement.value;
-	console.log(name);
 	fetch("/api/lists/create", {
 		method: "post",
 		headers: {
