@@ -99,7 +99,13 @@ function sortLists() {
 	});
 }
 
-document.getElementById("create-btn").onclick = () => {
+listNameElement.addEventListener("keydown", (event) => {
+	if (event.key == "Enter") createList();
+});
+
+document.getElementById("create-btn").onclick = createList;
+
+function createList() {
 	const name = listNameElement.value;
 	fetch("/api/lists/create", {
 		method: "post",
@@ -129,7 +135,7 @@ document.getElementById("create-btn").onclick = () => {
 			});
 		})
 		.catch((err) => error(err, "create"));
-};
+}
 
 function error(err, type) {
 	if (type == "create") {
