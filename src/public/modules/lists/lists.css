@@ -26,7 +26,7 @@ input {
 	display: grid;
 	grid-gap: 5px;
 	width: calc(var(--content-width) - 2 * 10px);
-	height: calc(100vh - 3 * 10px - var(--create-height));
+	max-height: calc(100vh - 3 * 10px - var(--create-height));
 
 	/* TODO: Change the overflow to auto without breaking the padding */
 	overflow-y: scroll;
