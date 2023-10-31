@@ -31,6 +31,8 @@ function updateLists() {
 }
 
 function displayLists() {
+	listsElement.innerHTML = "";
+
 	lists.forEach((list) => {
 		const listElement = document.createElement("div");
 		const contentElement = document.createElement("div");
