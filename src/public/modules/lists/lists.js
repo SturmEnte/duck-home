@@ -42,12 +42,16 @@ function displayLists() {
 
 		deleteButtonElement.innerText = "x";
 		deleteButtonElement.classList.add("list-delete-button");
-		deleteButtonElement.onclick = () => deleteList(list.id);
+		deleteButtonElement.onclick = (event) => {
+			event.stopPropagation();
+			deleteList(list.id);
+		};
 
 		listElement.id = list.id;
 		listElement.classList.add("list");
 		listElement.appendChild(contentElement);
 		listElement.appendChild(deleteButtonElement);
+		listElement.onclick = () => (location.href = `list#${list.id}`);
 
 		listsElement.appendChild(listElement);
 	});
