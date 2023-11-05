@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 	let id: string = randomUUID();
 	const title: string = req.body.title;
 
-	if (!List.exists({ user_id: userId, id: listId })) {
+	if (!(await List.exists({ user_id: userId, id: listId }))) {
 		res.status(400).json({
 			error: "List does not exist",
 		});
