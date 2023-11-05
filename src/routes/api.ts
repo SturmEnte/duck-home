@@ -20,6 +20,7 @@ import getLists from "./api/lists/lists";
 import deleteList from "./api/lists/delete";
 
 import createListEntry from "./api/lists/entries/create";
+import deleteListEntry from "./api/lists/entries/delete";
 
 import Token from "../models/Token";
 
@@ -67,5 +68,6 @@ router.use("/lists/lists", getLists);
 router.use("/lists/delete", deleteList);
 
 router.use("/lists/entries/create", createListEntry);
+router.use("/lists/entries/delete", deleteListEntry);
 
 export default router;
