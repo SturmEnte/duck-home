@@ -11,7 +11,7 @@ interface ListEntry {
 }
 
 router.get("/", async (req, res) => {
-	if (!req.body.list_id) {
+	if (!req.query.list_id) {
 		res.status(400).json({
 			error: "No list id",
 		});
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 	}
 
 	const userId: string = String(req.headers.authorization?.split(".")[1]);
-	const listId: string = req.body.list_id;
+	const listId: string = String(req.query.list_id);
 
 	let listEntries: ListEntry[] = [];
 
