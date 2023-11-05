@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export default model(
-	"weight_entity",
+	"weight-entity",
 	new Schema({
 		user_id: {
 			type: String,
