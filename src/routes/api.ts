@@ -19,6 +19,8 @@ import createList from "./api/lists/create";
 import getLists from "./api/lists/lists";
 import deleteList from "./api/lists/delete";
 
+import createListEntry from "./api/lists/entries/create";
+
 import Token from "../models/Token";
 
 const router = Router();
@@ -63,5 +65,7 @@ router.use("/device/register", registerDevice);
 router.use("/lists/create", createList);
 router.use("/lists/lists", getLists);
 router.use("/lists/delete", deleteList);
+
+router.use("/lists/entries/create", createListEntry);
 
 export default router;
