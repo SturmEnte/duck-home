@@ -30,6 +30,12 @@ self.addEventListener("install", async (event) => {
 		cache.add(`/${module.id}/`);
 		cache.add(`/${module.id}/${module.id}.js`);
 		cache.add(`/${module.id}/${module.id}.css`);
+
+		if (!module["extra-files"]) return;
+
+		module["extra-files"].forEach((file) => {
+			cache.add(`/${module.id}${file}`);
+		});
 	});
 });
 

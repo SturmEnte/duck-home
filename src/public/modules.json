@@ -1,7 +1,8 @@
 [
 	{
 		"name": "Lists",
-		"id": "lists"
+		"id": "lists",
+		"extra-files": ["/list/index.html", "/list/list.css", "/list/list.js"]
 	},
 	{
 		"name": "Weight Tracker",
