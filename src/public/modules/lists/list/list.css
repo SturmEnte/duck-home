@@ -1,0 +1,26 @@
+:root {
+	--create-height: 50px;
+}
+
+input {
+	width: 30%;
+	min-width: 300px;
+	height: 50px;
+	border: none;
+	border-radius: var(--border-radius);
+	background: var(--bg-sec);
+	font-size: 1.3rem;
+	margin: 0 10px;
+	padding-left: 5px;
+}
+
+#head {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: var(--create-height);
+}
+
+#create-btn {
+	width: fit-content;
+}
