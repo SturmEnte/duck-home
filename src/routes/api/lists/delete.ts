@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import List from "../../../models/List";
+import ListEntry from "../../../models/ListEntry";
 
 const router = Router();
 
@@ -24,7 +25,15 @@ router.delete("/", async (req, res) => {
 
 	List.deleteOne({ user_id: userId, id: id })
 		.then(() => {
-			res.sendStatus(204);
+			ListEntry.deleteMany({ user_id: userId, list_id: id })
+				.then(() => {
+					res.sendStatus(204);
+				})
+				.catch((err) => {
+					console.log("Error while deleting list entries from list");
+					console.log(err);
+					res.status(500).json({ error: "Unknown error while deleting list entries from list" });
+				});
 		})
 		.catch((err) => {
 			console.log("Error while deleting list");
