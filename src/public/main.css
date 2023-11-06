@@ -85,3 +85,16 @@ button {
 	box-sizing: border-box;
 	padding: 0 10px;
 }
+
+#back {
+	color: white;
+	text-decoration: none;
+	background-color: var(--accent);
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.8rem;
+}
