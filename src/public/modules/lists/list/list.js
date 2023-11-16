@@ -38,7 +38,7 @@ function displayEntries() {
 }
 
 entryTitleElement.addEventListener("keydown", (event) => {
-	if (event.key == "Enter") createList();
+	if (event.key == "Enter") createEntry();
 });
 
 document.getElementById("create-btn").onclick = createEntry;
