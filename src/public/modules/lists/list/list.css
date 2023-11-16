@@ -24,3 +24,34 @@ input {
 #create-btn {
 	width: fit-content;
 }
+
+#entries {
+	margin-top: 10px;
+	display: grid;
+	grid-gap: 5px;
+	width: calc(var(--content-width) - 2 * 10px);
+	max-height: calc(100vh - 3 * 10px - var(--create-height));
+
+	/* TODO: Change the overflow to auto without breaking the padding */
+	overflow-y: scroll;
+	padding-right: 10px;
+	box-sizing: border-box;
+
+	grid-template-columns: 1fr 1fr;
+}
+
+.entry {
+	background: var(--bg-sec);
+	border-radius: var(--border-radius);
+	padding: 10px;
+	box-sizing: border-box;
+	white-space: initial;
+	word-wrap: break-word;
+	width: 100%;
+	max-width: calc((var(--content-width) - 2 * 10px) / 2);
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
