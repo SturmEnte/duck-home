@@ -70,6 +70,8 @@ function createEntry() {
 				entries.push(data);
 				displayEntries();
 			});
+
+			entryTitleElement.value = "";
 		})
 		.catch((err) => error(err, "create"));
 }
