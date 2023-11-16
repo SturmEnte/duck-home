@@ -32,12 +32,9 @@ input {
 	width: calc(var(--content-width) - 2 * 10px);
 	max-height: calc(100vh - 3 * 10px - var(--create-height));
 
-	/* TODO: Change the overflow to auto without breaking the padding */
-	overflow-y: scroll;
 	padding-right: 10px;
+	overflow-y: auto;
 	box-sizing: border-box;
-
-	grid-template-columns: 1fr 1fr;
 }
 
 .entry {
@@ -48,7 +45,6 @@ input {
 	white-space: initial;
 	word-wrap: break-word;
 	width: 100%;
-	max-width: calc((var(--content-width) - 2 * 10px) / 2);
 	height: fit-content;
 	display: flex;
 	flex-direction: row;
