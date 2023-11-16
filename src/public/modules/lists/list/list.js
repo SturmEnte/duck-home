@@ -37,7 +37,6 @@ function displayEntries() {
 	});
 }
 
-//#region Create entry
 entryTitleElement.addEventListener("keydown", (event) => {
 	if (event.key == "Enter") createList();
 });
@@ -75,8 +74,5 @@ function createEntry() {
 		})
 		.catch((err) => error(err, "create"));
 }
-//#endregion
 
-//#region Start
 updateEntries();
-//#endregion
