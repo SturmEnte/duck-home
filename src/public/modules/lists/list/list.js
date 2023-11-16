@@ -5,24 +5,6 @@ const entryTitleElement = document.getElementById("entry-title");
 
 let entries = [];
 
-/*fetch("/api/lists/entries/entries?list_id=" + encodeURIComponent(LIST_ID), {
-	method: "get",
-	headers: {
-		Authorization: localStorage.getItem("token"),
-	},
-})
-	.then((res) => {
-		res.json().then((data) => {
-			data.forEach((entry) => {
-				document.getElementById("content").innerHTML += `<br/>${entry.title}`;
-			});
-		});
-	})
-	.catch((err) => {
-		console.error("Error while fetchting list entries:");
-		console.error(err);
-	});*/
-
 function updateEntries() {
 	fetch("/api/lists/entries/entries?list_id=" + encodeURIComponent(LIST_ID), {
 		method: "get",
@@ -70,7 +52,7 @@ function createEntry() {
 			Authorization: localStorage.getItem("token"),
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ title: title }),
+		body: JSON.stringify({ title: title, list_id: LIST_ID }),
 	})
 		.then((res) => {
 			if (res.status != 201) {
