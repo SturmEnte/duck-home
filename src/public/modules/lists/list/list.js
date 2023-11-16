@@ -51,7 +51,7 @@ function createEntry() {
 			Authorization: localStorage.getItem("token"),
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ title: title, list_id: LIST_ID }),
+		body: JSON.stringify({ title: title, list_id: LIST_ID, return: true }),
 	})
 		.then((res) => {
 			if (res.status != 201) {
@@ -67,9 +67,8 @@ function createEntry() {
 			}
 
 			res.json().then((data) => {
-				lists.push(data);
-				sortLists();
-				displayLists();
+				entries.push(data);
+				displayEntries();
 			});
 		})
 		.catch((err) => error(err, "create"));

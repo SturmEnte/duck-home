@@ -37,14 +37,24 @@ router.post("/", async (req, res) => {
 		id = randomUUID();
 	}
 
+	let created = Date.now();
+
 	ListEntry.create({
 		user_id: userId,
 		list_id: listId,
 		id: id,
 		title: title,
-		created: Date.now(),
+		created: created,
 	})
 		.then(() => {
+			if (req.body.return && req.body.return == true) {
+				res.status(201).json({
+					id: id,
+					title: title,
+					created: created,
+				});
+				return;
+			}
 			res.sendStatus(201);
 		})
 		.catch((err) => {
