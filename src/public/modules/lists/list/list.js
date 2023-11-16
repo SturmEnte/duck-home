@@ -28,13 +28,37 @@ function displayEntries() {
 	entriesElement.innerHTML = "";
 
 	entries.forEach((entry) => {
-		const entryElement = document.createElement("div");
-		entryElement.classList.add("entry");
-		entryElement.id = entry.id;
-		entryElement.innerText = entry.title;
+		// const entryElement = document.createElement("div");
+		// entryElement.classList.add("entry");
+		// entryElement.id = entry.id;
+		// entryElement.innerText = entry.title;
 
-		entriesElement.append(entryElement);
+		// entriesElement.append(entryElement);
+
+		const entryElement = document.createElement("div");
+		const contentElement = document.createElement("div");
+		const deleteButtonElement = document.createElement("div");
+
+		contentElement.innerText = entry.title;
+
+		deleteButtonElement.innerText = "x";
+		deleteButtonElement.classList.add("entry-delete-button");
+		deleteButtonElement.onclick = (event) => {
+			event.stopPropagation();
+			deleteEntry(entry.id);
+		};
+
+		entryElement.id = entry.id;
+		entryElement.classList.add("entry");
+		entryElement.appendChild(contentElement);
+		entryElement.appendChild(deleteButtonElement);
+
+		entriesElement.appendChild(entryElement);
 	});
+}
+
+function deleteEntry(id) {
+	console.log("Delete entry:", id);
 }
 
 entryTitleElement.addEventListener("keydown", (event) => {
