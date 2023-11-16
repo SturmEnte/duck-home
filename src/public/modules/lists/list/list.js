@@ -28,13 +28,6 @@ function displayEntries() {
 	entriesElement.innerHTML = "";
 
 	entries.forEach((entry) => {
-		// const entryElement = document.createElement("div");
-		// entryElement.classList.add("entry");
-		// entryElement.id = entry.id;
-		// entryElement.innerText = entry.title;
-
-		// entriesElement.append(entryElement);
-
 		const entryElement = document.createElement("div");
 		const contentElement = document.createElement("div");
 		const deleteButtonElement = document.createElement("div");
@@ -58,7 +51,38 @@ function displayEntries() {
 }
 
 function deleteEntry(id) {
-	console.log("Delete entry:", id);
+	let entry = entries.find((entry) => entry.id == id);
+
+	if (!entry) {
+		alert("Entry id was not found");
+		return;
+	}
+
+	fetch("/api/lists/entries/delete", {
+		method: "delete",
+		headers: {
+			Authorization: localStorage.getItem("token"),
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ list_id: LIST_ID, id: id }),
+	})
+		.then((res) => {
+			if (res.status != 204) {
+				try {
+					res.json().then((data) => {
+						error(data.error, "delete");
+					});
+				} catch {
+					error("Unknown error", "delete");
+				}
+
+				return;
+			}
+
+			entries = entries.filter((entry) => entry.id != id);
+			displayEntries();
+		})
+		.catch((err) => error(err, "delete"));
 }
 
 entryTitleElement.addEventListener("keydown", (event) => {
