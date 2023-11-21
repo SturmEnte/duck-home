@@ -42,7 +42,8 @@ function login() {
 					return;
 				}
 				localStorage.setItem("token", data.token);
-				document.cookie = "loggedIn=true;path=/";
+
+				document.cookie = "loggedIn=true;path=/;expires=" + new Date(Date.now() + 1000 * 60 * 60 * 24 * 365).toUTCString();
 				window.location.href = "/";
 			});
 		})
